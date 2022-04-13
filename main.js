@@ -1,3 +1,76 @@
+let siteData;
+
+fetch(
+  "https://my-json-server.typicode.com/ArberTu474/quiz-questions-db/questions"
+)
+  .then((res) => res.json())
+  .then((data) => {
+    siteData = data;
+    renderQuestions(data);
+  });
+
+//takes the fetched data and stores it to a variable
+setTimeout(() => console.log(siteData), 3000);
+
+function renderQuestions(data) {
+  const questionsWrapper = document.querySelector("#questions-wrapper");
+
+  data.forEach(function callback(question, index) {
+    //question container
+    const questionContainer = document.createElement("div");
+    questionContainer.classList.add("question-container");
+
+    //question title
+    const questionTitle = document.createElement("h2");
+    questionTitle.classList.add("question");
+    questionTitle.textContent = question.question;
+    questionContainer.append(questionTitle);
+
+    //question img
+    if (question.img !== "") {
+      const questionImg = document.createElement("div");
+      questionImg.classList.add("img");
+      questionImg.style.backgroundImage = `url("${question.img}")`;
+      questionContainer.append(questionImg);
+    } else if (question.img === "") {
+      questionTitle.classList.add("no-img-question");
+    }
+
+    //question alternatives
+    const questionAlternatives = document.createElement("form");
+    questionAlternatives.name = "alternatives";
+
+    const alternativesContainer = document.createElement("div");
+    alternativesContainer.classList.add("alternatives");
+    questionAlternatives.append(alternativesContainer);
+
+    for (let i = 0; i < question.alternatives.length; i++) {
+      const alternative = document.createElement("div");
+      alternative.classList.add("alternative");
+
+      const input = document.createElement("input");
+      input.classList.add(`checkbox${index + 1}`);
+      input.classList.add("checkbox");
+      input.setAttribute("type", "checkbox");
+      input.name = "check1";
+      input.setAttribute("data-check1", "");
+      questionContainer.append(questionAlternatives);
+
+      const label = document.createElement("label");
+      label.classList.add("option");
+      label.classList.add("alternative-name");
+      label.setAttribute("for", "check1");
+      label.innerHTML = question.alternatives[i];
+      alternativesContainer.append(alternative);
+      alternative.append(input);
+      alternative.append(label);
+    }
+
+    //puts verything inide the main container
+    questionsWrapper.append(questionContainer);
+  });
+}
+
 const credentionalsContainer = document.querySelector("[data-credentionals]");
 const questionsContainer = document.querySelector("[data-questions-container]");
 
@@ -69,33 +142,52 @@ function alternativesValidation() {
   const al4 = document.querySelector("[data-check4]");
   const al5 = document.querySelector("[data-check5]");
 
-  if (
-    al1.checked == true &&
-    al2.checked == false &&
-    al3.checked == false &&
-    al4.checked == true &&
-    al5.checked == true
-  ) {
-    indicatorHandler(
-      answerP,
-      answerContainer,
-      "SAKTË!",
-      "block",
-      "correct-container",
-      "correct",
-      questionsContainer
-    );
-  } else {
-    indicatorHandler(
-      answerP,
-      answerContainer,
-      "Përgjigja juaj nuk është e skatë!",
-      "block",
-      "wrong-container",
-      "error",
-      questionsContainer
-    );
+  for (let i = 0; i < siteData.length; i++) {
+    const checkbox = document.getElementsByClassName(`checkbox${i + 1}`);
+
+    const alternatives = document.getElementsByClassName("alternatives");
+    let questionIndex = i;
+
+    for (let i = 0; i < siteData[questionIndex].alternatives.length; i++) {
+      if (
+        checkbox[siteData[questionIndex].answer - 1].checked == true &&
+        checkbox[i].checked == true
+      ) {
+        console.log(`question ${i + 1} is correct`);
+      } else {
+        console.log(`question ${i + 1} is wrong`);
+      }
+    }
+    console.log("----------------------------");
   }
+
+  // for (let i = 0; i < 4; i++) {
+  //   if (checkbox[siteData[i].answer - 1].checked == true) {
+  //     console.log(checkbox[siteData[i].answer - 1]);
+  //     console.log(`question ${i + 1} is correct`);
+  //   } else {
+  //     console.log(`question ${i + 1} is wrong`);
+  //   }
+  // }
+
+  // indicatorHandler(
+  //   answerP,
+  //   answerContainer,
+  //   "SAKTË!",
+  //   "block",
+  //   "correct-container",
+  //   "correct",
+  //   questionsContainer
+  // );
+  // indicatorHandler(
+  //   answerP,
+  //   answerContainer,
+  //   "Përgjigja juaj nuk është e skatë!",
+  //   "block",
+  //   "wrong-container",
+  //   "error",
+  //   questionsContainer
+  // );
 }
 
 function indicatorHandler(
@@ -123,69 +215,4 @@ function reset() {
   if (confirm(confirmationText) == true) {
     location.reload();
   }
-}
-
-fetch(
-  "https://my-json-server.typicode.com/ArberTu474/quiz-questions-db/questions"
-)
-  .then(function (resp) {
-    return resp.json();
-  })
-  .then(function (data) {
-    // console.log(data);
-    renderQuestions(data);
-  });
-
-function renderQuestions(data) {
-  const questionsWrapper = document.querySelector("#questions-wrapper");
-
-  data.forEach((question) => {
-    console.log(question.alternatives[1]);
-    //question container
-    const questionContainer = document.createElement("div");
-    questionContainer.classList.add("question-container");
-
-    //question title
-    const questionTitle = document.createElement("h2");
-    questionTitle.classList.add("question");
-    questionTitle.textContent = question.question;
-    questionContainer.append(questionTitle);
-
-    //question img
-    const questionImg = document.createElement("div");
-    questionImg.classList.add("img");
-    questionContainer.append(questionImg);
-
-    //question alternatives
-    const questionAlternatives = document.createElement("form");
-    questionAlternatives.name = "alternatives";
-
-    const alternativesContainer = document.createElement("div");
-    alternativesContainer.classList.add("alternatives");
-    questionAlternatives.append(alternativesContainer);
-
-    for (let i = 0; i < question.alternatives.length; i++) {
-      const alternative = document.createElement("div");
-      alternative.classList.add("alternative");
-
-      const input = document.createElement("input");
-      input.classList.add("checkbox");
-      input.setAttribute("type", "checkbox");
-      input.name = "check1";
-      input.setAttribute("data-check1", "");
-      questionContainer.append(questionAlternatives);
-
-      const label = document.createElement("label");
-      label.classList.add("option");
-      label.classList.add("alternative-name");
-      label.setAttribute("for", "check1");
-      label.innerHTML = question.alternatives[i];
-      alternativesContainer.append(alternative);
-      alternative.append(input);
-      alternative.append(label);
-    }
-
-    //puts verything inide the main container
-    questionsWrapper.append(questionContainer);
-  });
 }

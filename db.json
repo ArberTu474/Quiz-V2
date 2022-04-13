@@ -1,19 +1,28 @@
 {
   "questions": [
     {
-      "question": "Wahat do you see in the picture?",
-      "alternatives": ["Fox", "Cow", "Cat", "Dog"],
-      "answer": 2
+      "question": "What do you see in the picture?",
+      "alternatives": ["Fox", "Cat", "Cow", "Dog"],
+      "answer": 2,
+      "img": "https://i.ibb.co/2Y1GcZn/cat.jpg"
     },
     {
       "question": "What is 2 + 3?",
       "alternatives": ["3", "6", "5", "12"],
-      "answer": 3
+      "answer": 3,
+      "img": ""
     },
     {
       "question": "Waht color do you see?",
       "alternatives": ["Red", "Blue", "Yellow", "Green"],
-      "answer": 1
+      "answer": 1,
+      "img": "https://i.ibb.co/SdKkfTF/red.png"
+    },
+    {
+      "question": "Which country does this flag belong to?",
+      "alternatives": ["US", "Uk", "EU"],
+      "answer": 2,
+      "img": "https://i.ibb.co/QKhsPRV/Uk.webp"
     }
   ]
 }

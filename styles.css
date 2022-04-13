@@ -170,7 +170,7 @@ nav {
 }
 
 .img {
-  background-image: url("img/photo.jpg");
+  /* background-image: url("img/photo.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -213,6 +213,12 @@ nav {
   margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: 400;
+}
+
+.no-img-question {
+  margin-bottom: 2.4rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 1px var(--clr-text-color-light);
 }
 
 /*------------------ Action ------------------*/
