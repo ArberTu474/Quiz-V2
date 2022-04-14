@@ -80,7 +80,7 @@ const answerP = document.querySelector("[data-correct]");
 const answerContainer = document.querySelector("[data-correct-container]");
 
 function submit() {
-  const confirmationText = "A doni të bëni Submit formularin?";
+  const confirmationText = "Do you want to submit your quiz";
   if (confirm(confirmationText) === true) {
     nameValidation();
   } else return;
@@ -187,7 +187,7 @@ function focusDiv(focusElement) {
 }
 
 function reset() {
-  const confirmationText = "A doni të bëni Cancel formularin?";
+  const confirmationText = "Do you want to cancel your quiz";
   if (confirm(confirmationText) == true) {
     location.reload();
   }
