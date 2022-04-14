@@ -19,7 +19,7 @@
   --clr-error-bg-border: #ff9999;
 
   --clr-correct: #4eaf16;
-  --clr-correct-bg: hsl(118, 100%, 89%);
+  --clr-correct-bg: #c9ffc7;
   --clr-correct-bg-border: #96e48e;
 
   --clr-bg-color: #f3edf7;
@@ -154,6 +154,22 @@ nav {
   border: solid 1px var(--clr-error-bg-border);
 }
 
+.correct-alternative {
+  padding: 1rem;
+  border: solid 2px var(--clr-correct-bg-border);
+  color: var(--clr-correct);
+  background-color: var(--clr-correct-bg);
+  border-radius: 0.6rem;
+}
+
+.wrong-alternative {
+  padding: 1rem;
+  border: solid 2px var(--clr-error-bg-border);
+  color: var(--clr-error);
+  background-color: var(--clr-error-bg);
+  border-radius: 0.6rem;
+}
+
 /*------------------ Questions ------------------*/
 
 .question-container {
@@ -181,19 +197,17 @@ nav {
 
 .checkbox {
   -webkit-appearance: none;
-  background-color: var(--clr-input-filed-bg);
-  border: 3px solid var(--clr-accent-color);
+  border: 2.5px solid var(--clr-accent-color);
   width: 7px;
   height: 7px;
   padding: 7px;
-  border-radius: 3px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
 .checkbox:checked {
   -webkit-appearance: none;
   background-image: url("img/check.svg");
-  background-color: var(--clr-accent-color);
 }
 
 .alternative {
@@ -218,7 +232,7 @@ nav {
 .no-img-question {
   margin-bottom: 2.4rem;
   padding-bottom: 1rem;
-  border-bottom: solid 1px var(--clr-text-color-light);
+  border-bottom: solid 2px var(--clr-text-color-light);
 }
 
 /*------------------ Action ------------------*/
