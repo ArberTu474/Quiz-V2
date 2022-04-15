@@ -112,6 +112,22 @@ nav {
   font-size: 1.5rem;
 }
 
+.score-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.score {
+  font-size: 2.4rem;
+  font-weight: bold;
+  letter-spacing: 0.6rem;
+}
+
 .error-container {
   background-color: var(--clr-error-bg);
   margin-top: 1.6rem;

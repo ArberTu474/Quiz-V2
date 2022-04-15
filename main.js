@@ -154,6 +154,10 @@ function alternativesValidation() {
         checkbox[siteData[questionIndex].answer - 1].parentNode.classList.add(
           "correct-alternative"
         );
+        checkbox[siteData[questionIndex].answer - 1].parentNode.setAttribute(
+          "correct",
+          ""
+        );
         //checks if the correct alternative is not checked and tells the user the correct alterantive by highliting it
       } else if (
         checkbox[siteData[questionIndex].answer - 1].checked === false
@@ -164,6 +168,11 @@ function alternativesValidation() {
       }
     }
   }
+  //conts the score
+  const scoreIndicator = document.querySelector("[data-score]");
+  const correctAlternatives = document.querySelectorAll("[correct]");
+  let score = correctAlternatives.length;
+  scoreIndicator.textContent = `${score}/${siteData.length}`;
 }
 
 function indicatorHandler(
