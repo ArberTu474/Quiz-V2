@@ -20,7 +20,7 @@
     },
     {
       "question": "Which country does this flag belong to?",
-      "alternatives": ["US", "Uk", "EU"],
+      "alternatives": ["US", "UK", "EU"],
       "answer": 2,
       "img": "https://i.ibb.co/QKhsPRV/Uk.webp"
     }

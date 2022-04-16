@@ -1,13 +1,11 @@
 let siteData;
 let checkbox;
 
-fetch(
-  "https://my-json-server.typicode.com/ArberTu474/quiz-questions-db/questions"
-)
+fetch("https://arbertu474.github.io/database-quiz/data.json")
   .then((res) => res.json())
   .then((data) => {
-    siteData = data;
-    renderQuestions(data);
+    siteData = data.questions;
+    renderQuestions(siteData);
   });
 
 //takes the fetched data and stores it to a variable
