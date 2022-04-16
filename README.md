@@ -3,7 +3,7 @@
 https://arber-quizv2.netlify.app/
 
 ## DB hosting link
-https://my-json-server.typicode.com/ArberTu474/quiz-questions-db/questions
+https://arbertu474.github.io/database-quiz/data.json
 
 ## DB repo
-https://github.com/ArberTu474/quiz-questions-db
+https://github.com/ArberTu474/database-quiz
